@@ -30,14 +30,14 @@ JS 파일을 만든 후 콘솔에서 명령어 node [JS 파일 경로]를 통해
 보통 파일 하나가 모듈 하나가 됨.
 노드는 CommonJs, ECMAScript 이라는 두 가지 형식의 모듈을 사용함. 
 ## 1.3 노드 내장 객체 알아보기
-global: 전역 객체. 모든 파일에서 접근 가능함.
-console: 대표적으로 console.log 메서드가 있음. 변수에 값이 제대로 들어 있는지 확인하거나, 에러 내용을 콘솔에 표시하기 위해서 사용하기도 함.
-타이머: setTimeout, setInterval, setImmediate 와 같은 메서드는 타이머 기능을 제공함. 이들은 아이디를 반환하며, 아이디를 사용했을 때 타이머를 취소할 수 있음.
-process: 현재 실행되고 있는 노드 프로세스에 대한 정보를 담고 있음. 
+- global: 전역 객체. 모든 파일에서 접근 가능함.
+- console: 대표적으로 console.log 메서드가 있음. 변수에 값이 제대로 들어 있는지 확인하거나, 에러 내용을 콘솔에 표시하기 위해서 사용하기도 함.
+- 타이머: setTimeout, setInterval, setImmediate 와 같은 메서드는 타이머 기능을 제공함. 이들은 아이디를 반환하며, 아이디를 사용했을 때 타이머를 취소할 수 있음.
+- process: 현재 실행되고 있는 노드 프로세스에 대한 정보를 담고 있음. 
  
 
 ## 1.4 노드 내장 모듈 사용하기
-os: 웹 브라우저에 사용되는 자바스크립트와 달리,  노드는 os 모듈에 정보가 담겨 있어 운영체제의 정보를 가져올 수 있음. require('os') 또는 require('node:os')를 통해 os 모듈을 불러올 수 있음.
+- os: 웹 브라우저에 사용되는 자바스크립트와 달리,  노드는 os 모듈에 정보가 담겨 있어 운영체제의 정보를 가져올 수 있음. require('os') 또는 require('node:os')를 통해 os 모듈을 불러올 수 있음.
 ```
 // os.js
 const os = require('os');
@@ -62,7 +62,7 @@ console.log('메모리 정보-----------------------------------');
 console.log('os.freemem():', os.freemem());
 console.log('os.totalmem():', os.totalmem());
 ```
-path: 폴더와 파일의 경로를 쉽게 조작할 수 있게 도와줌. 운영체제는 크게 윈도 타입과 POSIX 타입으로 구분되며, 운영체제별로 경로 구분자가 다르기 때문에 path 모듈이 필요함. __filename, __dirname은 각각 현재 파일과 현재 폴더의 경로를 표시함.
+- path: 폴더와 파일의 경로를 쉽게 조작할 수 있게 도와줌. 운영체제는 크게 윈도 타입과 POSIX 타입으로 구분되며, 운영체제별로 경로 구분자가 다르기 때문에 path 모듈이 필요함. __filename, __dirname은 각각 현재 파일과 현재 폴더의 경로를 표시함.
 윈도: C:\Users\ZeroCho처럼 \로 구분
 POSIX: /home/zerocho처럼 /로 구분
 ```
@@ -94,7 +94,7 @@ console.log('path.relative():', path.relative('C:\users\zerocho\path.js', 'C:\')
 console.log('path.join():', path.join(__dirname, '..', '..', '/users', '.', '/zerocho'));
 console.log('path.resolve():', path.resolve(__dirname, '..', 'users', '.', '/zerocho'));
 ```
-url: 인터넷 주소를 쉽게 조작할 수 있게 도와주는 모듈. WHATWG와 기존에 사용하던 방식의 url을 이용함. url 모듈 안에 URL 생성자가 있으며, 이 생성자에 주소를 넣어 객체로 만들면 주소가 부분별로 정리됨.
+- url: 인터넷 주소를 쉽게 조작할 수 있게 도와주는 모듈. WHATWG와 기존에 사용하던 방식의 url을 이용함. url 모듈 안에 URL 생성자가 있으며, 이 생성자에 주소를 넣어 객체로 만들면 주소가 부분별로 정리됨.
 ```
 // url.js
 const url = require('url');
@@ -103,9 +103,10 @@ const { URL } = url;
 const myURL = new URL('http://www.gilbut.co.kr/book/bookList.aspx?sercate1=001001000#anchor');
 console.log('new URL():', myURL);
 console.log('url.format():', url.format(myURL));
+```
  
 
-dns: DNS를 다룰 때 사용하는 모듈. 주로 도메인을 통해 IP나 기타 DNS 정보를 얻고자 할 때 사용함. dns.lookup이나 dns.resolve(도메인)을 통해 ip 주소를 얻을 수 있음.
+- dns: DNS를 다룰 때 사용하는 모듈. 주로 도메인을 통해 IP나 기타 DNS 정보를 얻고자 할 때 사용함. dns.lookup이나 dns.resolve(도메인)을 통해 ip 주소를 얻을 수 있음.
 ```
 // dns.mjs
 import dns from 'dns/promises';
@@ -127,7 +128,7 @@ console.log('ANY', any);
  ```
  
 
-crypto: 다양한 방식의 암호화를 도와주는 모듈. 비밀번호는 반드시 암호화하여야 함. 단방향 암호화 알고리즘, 양방향 대칭형 암호화와 같은 방식이 있음.
+- crypto: 다양한 방식의 암호화를 도와주는 모듈. 비밀번호는 반드시 암호화하여야 함. 단방향 암호화 알고리즘, 양방향 대칭형 암호화와 같은 방식이 있음.
 util: 각종 편의 기능을 모아둔 모듈. util.deprecate, util.promisify와 같은 메서드를 가짐.
 worker_threads: 이 모듈을 통해 노드에서 멀티 스레드 방식으로 작업할 수 있음. isMainThread를 통해 현재 코드가 메인 스레드(기존에 동작하던 싱글 스레드)에서 실행되는지, 아니면 워커 스레드에서 실행되는지 구분할 수 있음. 
 ```
@@ -151,7 +152,7 @@ if (isMainThread) { // 부모일 때
 ```
  
 
-child_process: 노드에서 다른 프로그램을 실행하고 싶거나 명령어를 수행하고 싶을 때 사용하는 모듈. 이 모듈을 통해 다른 언어의 코드를 실행하고 결괏값까지 받을 수 있음. 즉, 현재 노드 프로세스 외에 새로운 프로세스를 띄워서 명령을 수행하고 노드 프로세스에 결과를 알려줌. 
+- child_process: 노드에서 다른 프로그램을 실행하고 싶거나 명령어를 수행하고 싶을 때 사용하는 모듈. 이 모듈을 통해 다른 언어의 코드를 실행하고 결괏값까지 받을 수 있음. 즉, 현재 노드 프로세스 외에 새로운 프로세스를 띄워서 명령을 수행하고 노드 프로세스에 결과를 알려줌. 
 아래의 예제 코드는 노드에서 spawn 메서드를 통해 파이썬 프로그램을 실행함. 
 ```
 // test.py
@@ -169,6 +170,7 @@ process.stdout.on('data', function(data) {
 process.stderr.on('data', function(data) {
   console.error(data.toString());
 }); // 실행 에러
+```
 ## 1.5 파일 시스템 접근하기
 fs 모듈을 통해 파일 시스템에 접근할 수 있음. 파일을 생성하거나 삭제하고, 읽고 쓸 수 있는 권한을 가짐.
 버퍼(buffer)란 메모리의 데이터를 말함. toString 메서드를 통해 문자열로 변환해야지만 읽을 수 있음. 버퍼 객체는 from, toString, concat 등의 메서드를 제공함.
@@ -218,10 +220,10 @@ createServer 뒤 listen 메서드를 붙이고 포트 번호와 실행될 콜백
 포트 번호를 달리 하여 한 번에 여러 서버를 실행할 수 있음.
 HTTP 상태 코드: 브라우저는 서버가 보내준 상태 코드를 통해 요청의 성공 여부를 판별함. 
 
-2xx (성공)
-3xx (리다이렉션)
-4xx (요청 오류)
-5xx (서버 오류)
+- 2xx (성공)
+- 3xx (리다이렉션)
+- 4xx (요청 오류)
+- 5xx (서버 오류)
 ```
 //createServer.js
 const http = require('http');
@@ -252,19 +254,19 @@ PUT: 서버의 자원을 요청에 들어 있는 자원으로 치환
 PATCH: 서버 자원의 일부 수정
 DELETE: 서버 자원 삭제
 OPTIONS: 요청 전 통신 옵션 설명
-2.3 쿠키와 세션
+## 2.3 쿠키와 세션
 
 클라이언트를 기억하기 위해 서버는 요청에 대한 응답을 보낼 때 쿠키를 함께 보냄. 그다음부터 웹 브라우저는 저장해 둔 쿠키를 요청할 때 함께 보내고, 서버는 이 쿠키를 읽어 들여 클라이언트를 파악함.
 쿠키는 유효 기간이 있으며, '키-값' 쌍의 형태를 가짐. 요청의 헤더에 담겨 전송됨. ex) 'flavor=choco'
  
 
-## 2.3 https와 http2
+## 2.4 https와 http2
 https 모듈은 웹 서버에 SSL(Secure Sockets Layer) 암호화를 추가함. 즉, GET/POST 요청을 할 때 오가는 데이터를 암호화하여 기밀성을 유지함.
 암호화되어 있지 않은 서버에 암호화를 적용하려면 인증서를 발급받아야 함.
 https 모듈을 적용하려면 createServer 메서드가 기존 인수뿐만 아니라 인증서에 관련된 옵션 객체를 인수로 받아야 함.
 노드의 http2 모듈은 SSL 암호화와 더불어 최신 HTTP 프로토콜인 http/2를 사용할 수 있게 함. http/2는 요청 및 응답 방식이 기존 http/1.1보다 효율적임.
 http2 모듈을 적용하려면 https 모듈을 http2로, createServer 메서드를 createSecure Server 메서드로 바꿔야 함.
-2.4. Cluster
+## 2.5 Cluster
 클러스터 모듈은 싱글 프로세스로 동작하는 노드가 모든 cpu 코어를 사용할 수 있게 해주는 모듈임. 예를 들어 코어가 여덟 개인 서버가 있어도, 노드는 코드를 하나만 활용함. 이때 클러스트 모듈을 설정하면 코어 하나당 노드 프로세스 하나가 돌아가게 할 수 있음. 즉, 성능을 개선할 수 있으나 메모리를 공유하지 못한다는 단점도 보유하고 있음. 
 
 클러스트는 마스터 프로세스와 워커 프로세스로 나뉨. 이때 마스터 프로세스는 CPU 개수만큼 워커 프로세스를 만들고, 8086번 포트에서 대기함. 요청이 들어오면 만들어진 워커 프로세스에 요청을 분배함.
